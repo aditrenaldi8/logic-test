@@ -66,13 +66,18 @@ export class AppComponent implements OnInit{
       for(let j=0;j<this.arr_teller.length;j++) {
         let temp= 0;
         temp = this.arr_counter[j] * (this.time/this.arr_teller[j].kemampuan);
+  
         if(tempmost == 0){
           tempmost = temp;
         }else{
           tempmost = tempmost > temp ? tempmost : temp;
         }
         this.arr_temp_result[j] = this.arr_counter[j];
-        this.arr_result.push({'value': tempmost, 'data': Object.assign([], this.arr_temp_result)})
+
+        if(j == this.arr_teller.length -1){
+          this.arr_result.push({'value': tempmost, 'data': Object.assign([], this.arr_temp_result)})
+        }
+       
       }
       if(most == 0){
         most = tempmost;	
@@ -90,9 +95,9 @@ export class AppComponent implements OnInit{
     }
     console.log('most', most)
    
+    this.fastest = most;
     const data = this.arr_result.find(function(element) {return element.value == most; });
     this.setResult(data);
-    this.fastest = most
   }
 
   setResult(value : any){

@@ -1,26 +1,18 @@
-Teller 1 : {{arr_teller[0].kemampuan}} customer / {{time}} second 
-<br>
-Teller 2 : {{arr_teller[1].kemampuan}} customer / {{time}} second
-<br>
-Teller 3 : {{arr_teller[2].kemampuan}} customer / {{time}} second
-<br>
-Teller 4 : {{arr_teller[3].kemampuan}} customer / {{time}} second
-<br>
+<div *ngFor="let item of arr_teller; let i = index">
+    <span> Teller {{i+1}} : {{item.kemampuan}} customer / {{time}} s </span> -> kecepatan : {{time/item.kemampuan}} s
+    <br>
+</div> 
 
 Total Customer : {{customer}}
 <br>
 
-Waktu tercepat : {{fastest}} second
+Waktu tercepat : {{fastest}} s
 <br>
 
 Hasil:
 <br>
 
-Teller 1 : {{arr_teller[0].result}} customer 
-<br>
-Teller 2 : {{arr_teller[1].result}} customer
-<br>
-Teller 3 : {{arr_teller[2].result}} customer
-<br>
-Teller 4 : {{arr_teller[3].result}} customer
-<br>
+<div *ngFor="let item of arr_teller; let i = index">
+    <span> Teller {{i+1}} : {{item.result}} customer(s) </span> -> kecepatan : {{item.result * time/item.kemampuan}} s
+    <br>
+</div> 
